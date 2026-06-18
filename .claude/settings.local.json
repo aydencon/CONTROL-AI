@@ -1,0 +1,29 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(pip --version)",
+      "Bash(pip install *)",
+      "Bash(python -m uvicorn main:app --port 8000)",
+      "Bash(curl -s http://localhost:8000/api/health)",
+      "Bash(python *)",
+      "Bash(powershell -Command \"Stop-Process -Id \\(Get-NetTCPConnection -LocalPort 8000 -ErrorAction SilentlyContinue | Select-Object -ExpandProperty OwningProcess\\) -Force -ErrorAction SilentlyContinue\")",
+      "Bash(cat)",
+      "Bash(curl -s -X POST http://localhost:8000/api/reconcile -F rec_type=bank -F gl_file=@/tmp/test_gl.csv -F statement_file=@/tmp/test_stmt.csv)",
+      "Bash(curl -s --max-time 5 http://localhost:8000/api/health)",
+      "Bash(curl -s --max-time 5 \"http://localhost:8000/\")",
+      "PowerShell(Invoke-RestMethod -Uri \"http://localhost:8000/api/health\" -TimeoutSec 5)",
+      "PowerShell(Get-NetTCPConnection *)",
+      "PowerShell(Get-Process *)",
+      "PowerShell(netstat *)",
+      "PowerShell(Invoke-RestMethod -Uri \"http://127.0.0.1:8000/api/health\")",
+      "PowerShell($result = Invoke-WebRequest -Uri \"http://127.0.0.1:8000/api/health\" -UseBasicParsing -TimeoutSec 10; $result.Content)",
+      "PowerShell(Remove-Item *)",
+      "PowerShell(New-Item *)",
+      "PowerShell(Start-Sleep -Seconds 5; Invoke-WebRequest -Uri \"http://localhost:8501\" -UseBasicParsing -TimeoutSec 5 | Select-Object StatusCode, StatusDescription)",
+      "PowerShell(Stop-Process *)",
+      "Skill(run)",
+      "Bash(chromium-cli *)",
+      "PowerShell(pip install *)"
+    ]
+  }
+}
